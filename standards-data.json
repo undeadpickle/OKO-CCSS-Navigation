@@ -1,0 +1,402 @@
+{
+  "grades": {
+    "K": {
+      "name": "Kindergarten",
+      "domains": {
+        "CC": {
+          "code": "K.CC",
+          "name": "Counting & Cardinality",
+          "fullName": "Counting & Cardinality",
+          "clusters": {
+            "A": {
+              "name": "Know number names and the count sequence",
+              "standards": {
+                "1": {
+                  "code": "K.CC.A.1",
+                  "name": "Count to 100 by Ones & by Tens",
+                  "text": "Count to 100 by ones and by tens."
+                },
+                "2": {
+                  "code": "K.CC.A.2",
+                  "name": "Count Forward Beginning with A Given Number",
+                  "text": "Count forward beginning from a given number within the known sequence (instead of having to begin at 1)."
+                },
+                "3": {
+                  "code": "K.CC.A.3",
+                  "name": "Write & Represent Numbers 0 to 20 with Written Numerals",
+                  "text": "Write numbers from 0 to 20. Represent a number of objects with a written numeral 0-20 (with 0 representing a count of no objects)."
+                }
+              }
+            },
+            "B": {
+              "name": "Count to tell the number of objects",
+              "standards": {
+                "4": {
+                  "code": "K.CC.B.4",
+                  "name": "Understand Relationship Between Numbers & Quantities",
+                  "text": "Understand the relationship between numbers and quantities; connect counting to cardinality.",
+                  "subStandards": {
+                    "a": {
+                      "code": "K.CC.B.4.a",
+                      "name": "Count Objects Using Standard Order",
+                      "text": "When counting objects, say the number names in the standard order, pairing each object with one and only one number name and each number name with one and only one object."
+                    },
+                    "b": {
+                      "code": "K.CC.B.4.b",
+                      "name": "Count Objects in Different Arrangements",
+                      "text": "Understand that the last number name said tells the number of objects counted. The number of objects is the same regardless of their arrangement or the order in which they were counted."
+                    },
+                    "c": {
+                      "code": "K.CC.B.4.c",
+                      "name": "Understand Consecutive Numbers Refer to One More",
+                      "text": "Understand that each successive number name refers to a quantity that is one larger."
+                    }
+                  }
+                },
+                "5": {
+                  "code": "K.CC.B.5",
+                  "name": "Count Objects in Different Arrangements to Answer \"How Many?\"",
+                  "text": "Count to answer \"how many?\" questions about as many as 20 things arranged in a line, a rectangular array, or a circle, or as many as 10 things in a scattered configuration; given a number from 1-20, count out that many objects."
+                }
+              }
+            }
+          }
+        },
+        "OA": {
+          "code": "K.OA",
+          "name": "Operations & Algebraic Thinking",
+          "fullName": "Operations & Algebraic Thinking",
+          "clusters": {
+            "A": {
+              "name": "Understand addition, and understand subtraction",
+              "standards": {
+                "1": {
+                  "code": "K.OA.A.1",
+                  "name": "Represent Addition & Subtraction with Multiple Representations",
+                  "text": "Represent addition and subtraction with objects, fingers, mental images, drawings, sounds (e.g., claps), acting out situations, verbal explanations, expressions, or equations."
+                },
+                "2": {
+                  "code": "K.OA.A.2",
+                  "name": "Solve Word Problems Involving Adding/Subtracting Within 10 Using Drawings or Objects",
+                  "text": "Solve addition and subtraction word problems, and add and subtract within 10, e.g., by using objects or drawings to represent the problem."
+                },
+                "3": {
+                  "code": "K.OA.A.3",
+                  "name": "Decompose Numbers Up to 10 in Multiple Ways",
+                  "text": "Decompose numbers less than or equal to 10 into pairs in more than one way, e.g., by using objects or drawings, and record each decomposition by a drawing or equation (e.g., 5 = 2 + 3 and 5 = 4 + 1)."
+                },
+                "4": {
+                  "code": "K.OA.A.4",
+                  "name": "Use Tools (or Manipulatives) to Make 10 When Given Up to 10",
+                  "text": "For any number from 1 to 9, find the number that makes 10 when added to the given number, e.g., by using objects or drawings, and record the answer with a drawing or equation."
+                },
+                "5": {
+                  "code": "K.OA.A.5",
+                  "name": "Fluently Add & Subtract Within 5",
+                  "text": "Fluently add and subtract within 5."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "1": {
+      "name": "Grade 1",
+      "domains": {
+        "OA": {
+          "code": "1.OA",
+          "name": "Operations & Algebraic Thinking",
+          "fullName": "Operations & Algebraic Thinking",
+          "clusters": {
+            "A": {
+              "name": "Represent and solve problems involving addition and subtraction",
+              "standards": {
+                "1": {
+                  "code": "1.OA.A.1",
+                  "name": "Solve Word Problems Involving Adding/Subtracting Within 20",
+                  "text": "Use addition and subtraction within 20 to solve word problems involving situations of adding to, taking from, putting together, taking apart, and comparing, with unknowns in all positions, e.g., by using objects, drawings, and equations with a symbol for the unknown number to represent the problem."
+                },
+                "2": {
+                  "code": "1.OA.A.2",
+                  "name": "Solve Word Problems Involving Adding Three Whole Numbers With a Sum Up to 20",
+                  "text": "Solve word problems that call for addition of three whole numbers whose sum is less than or equal to 20, e.g., by using objects, drawings, and equations with a symbol for the unknown number to represent the problem."
+                }
+              }
+            },
+            "B": {
+              "name": "Understand and apply properties of operations and the relationship between addition and subtraction",
+              "standards": {
+                "3": {
+                  "code": "1.OA.B.3",
+                  "name": "Apply Properties of Operations to Add & Subtract",
+                  "text": "Apply properties of operations as strategies to add and subtract. Examples: If 8 + 3 = 11 is known, then 3 + 8 = 11 is also known. (Commutative property of addition.) To add 2 + 6 + 4, the second two numbers can be added to make a ten, so 2 + 6 + 4 = 2 + 10 = 12. (Associative property of addition.)"
+                },
+                "4": {
+                  "code": "1.OA.B.4",
+                  "name": "Understand Subtraction as an Unknown-Added Problem",
+                  "text": "Understand subtraction as an unknown-addend problem. For example, subtract 10 - 8 by finding the number that makes 10 when added to 8."
+                }
+              }
+            }
+          }
+        },
+        "MD": {
+          "code": "1.MD",
+          "name": "Measurement & Data",
+          "fullName": "Measurement & Data",
+          "clusters": {
+            "A": {
+              "name": "Measure lengths indirectly and by iterating length units",
+              "standards": {
+                "1": {
+                  "code": "1.MD.A.1",
+                  "name": "Order & Compare Objects by Their Length",
+                  "text": "Order three objects by length; compare the lengths of two objects indirectly by using a third object."
+                },
+                "2": {
+                  "code": "1.MD.A.2",
+                  "name": "Measure Length using Unit Objects",
+                  "text": "Express the length of an object as a whole number of length units, by laying multiple copies of a shorter object (the length unit) end to end; understand that the length measurement of an object is the number of same-size length units that span it with no gaps or overlaps."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "2": {
+      "name": "Grade 2",
+      "domains": {
+        "NBT": {
+          "code": "2.NBT",
+          "name": "Number & Operations in Base Ten",
+          "fullName": "Number & Operations in Base Ten",
+          "clusters": {
+            "A": {
+              "name": "Understand place value",
+              "standards": {
+                "1": {
+                  "code": "2.NBT.A.1",
+                  "name": "Understand Place Value of Each Digit Represented in Hundreds",
+                  "text": "Understand that the three digits of a three-digit number represent amounts of hundreds, tens, and ones; e.g., 706 equals 7 hundreds, 0 tens, and 6 ones."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "3": {
+      "name": "Grade 3",
+      "domains": {
+        "NF": {
+          "code": "3.NF",
+          "name": "Number & Operations—Fractions",
+          "fullName": "Number & Operations—Fractions",
+          "clusters": {
+            "A": {
+              "name": "Develop understanding of fractions as numbers",
+              "standards": {
+                "1": {
+                  "code": "3.NF.A.1",
+                  "name": "Understand a Fraction is Formed by the Quantity of its Parts",
+                  "text": "Understand a fraction 1/b as the quantity formed by 1 part when a whole is partitioned into b equal parts; understand a fraction a/b as the quantity formed by a parts of size 1/b."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "4": {
+      "name": "Grade 4",
+      "domains": {
+        "MD": {
+          "code": "4.MD",
+          "name": "Measurement & Data",
+          "fullName": "Measurement & Data",
+          "clusters": {
+            "A": {
+              "name": "Solve problems involving measurement and conversion of measurements",
+              "standards": {
+                "1": {
+                  "code": "4.MD.A.1",
+                  "name": "Convert Measurements Within a System & Display in Two-Column Tables",
+                  "text": "Know relative sizes of measurement units within one system of units including km, m, cm; kg, g; lb, oz.; l, ml; hr, min, sec."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "5": {
+      "name": "Grade 5",
+      "domains": {
+        "OA": {
+          "code": "5.OA",
+          "name": "Operations & Algebraic Thinking",
+          "fullName": "Operations & Algebraic Thinking",
+          "clusters": {
+            "A": {
+              "name": "Write and interpret numerical expressions",
+              "standards": {
+                "1": {
+                  "code": "5.OA.A.1",
+                  "name": "Evaluate Expressions Using Groupings",
+                  "text": "Use parentheses, brackets, or braces in numerical expressions, and evaluate expressions with these symbols."
+                },
+                "2": {
+                  "code": "5.OA.A.2",
+                  "name": "Write & Interpret Simple Expressions",
+                  "text": "Write simple expressions that record calculations with numbers, and interpret numerical expressions without evaluating them. For example, express the calculation \"add 8 and 7, then multiply by 2\" as 2 × (8 + 7). Recognize that 3 × (18932 + 921) is three times as large as 18932 + 921, without having to calculate the indicated sum or product."
+                }
+              }
+            },
+            "B": {
+              "name": "Analyze patterns and relationships",
+              "standards": {
+                "3": {
+                  "code": "5.OA.B.3",
+                  "name": "Generate & Identify Patterns Resulting from Two Given Rules",
+                  "text": "Generate two numerical patterns using two given rules. Identify apparent relationships between corresponding terms. Form ordered pairs consisting of corresponding terms from the two patterns, and graph the ordered pairs on a coordinate plane."
+                }
+              }
+            }
+          }
+        },
+        "NBT": {
+          "code": "5.NBT",
+          "name": "Number & Operations in Base Ten",
+          "fullName": "Number & Operations in Base Ten",
+          "clusters": {
+            "A": {
+              "name": "Understand the place value system",
+              "standards": {
+                "1": {
+                  "code": "5.NBT.A.1",
+                  "name": "Understand Base Ten Place Value Relationships",
+                  "text": "Recognize that in a multi-digit number, a digit in one place represents 10 times as much as it represents in the place to its right and 1/10 of what it represents in the place to its left."
+                },
+                "2": {
+                  "code": "5.NBT.A.2",
+                  "name": "Explain Patterns in the Number of Zeros when Multiplying by Powers of 10",
+                  "text": "Explain patterns in the number of zeros of the product when multiplying a number by powers of 10, and explain patterns in the placement of the decimal point when a decimal is multiplied or divided by a power of 10. Use whole-number exponents to denote powers of 10."
+                },
+                "3": {
+                  "code": "5.NBT.A.3",
+                  "name": "Read & Write Decimals to Thousandths",
+                  "text": "Read, write, and compare decimals to thousandths.",
+                  "subStandards": {
+                    "a": {
+                      "code": "5.NBT.A.3.a",
+                      "name": "Read & Write Decimals to Thousandths",
+                      "text": "Read and write decimals to thousandths using base-ten numerals, number names, and expanded form, e.g., 347.392 = 3 × 100 + 4 × 10 + 7 × 1 + 3 × (1/10) + 9 × (1/100) + 2 × (1/1000)."
+                    },
+                    "b": {
+                      "code": "5.NBT.A.3.b",
+                      "name": "Compare Decimals to Thousandths",
+                      "text": "Compare two decimals to thousandths based on meanings of the digits in each place, using >, =, and < symbols to record the results of comparisons."
+                    }
+                  }
+                },
+                "4": {
+                  "code": "5.NBT.A.4",
+                  "name": "Use Place Value to Round Decimals",
+                  "text": "Use place value understanding to round decimals to any place."
+                }
+              }
+            },
+            "B": {
+              "name": "Perform operations with multi-digit whole numbers and with decimals to hundredths",
+              "standards": {
+                "5": {
+                  "code": "5.NBT.B.5",
+                  "name": "Multiply Multi-Digit Whole Numbers Using the Standard Algorithm",
+                  "text": "Fluently multiply multi-digit whole numbers using the standard algorithm."
+                },
+                "6": {
+                  "code": "5.NBT.B.6",
+                  "name": "Divide Whole Numbers (Up to 4-Digit Dividends & 2-Digit Divisors)",
+                  "text": "Find whole-number quotients of whole numbers with up to four-digit dividends and two-digit divisors, using strategies based on place value, the properties of operations, and/or the relationship between multiplication and division. Illustrate and explain the calculation by using equations, rectangular arrays, and/or area models."
+                },
+                "7": {
+                  "code": "5.NBT.B.7",
+                  "name": "Add, Subtract, Multiply, and Divide Decimals to Hundredths",
+                  "text": "Add, subtract, multiply, and divide decimals to hundredths, using concrete models or drawings and strategies based on place value, properties of operations, and/or the relationship between addition and subtraction; relate the strategy to a written method and explain the reasoning used."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "6": {
+      "name": "Grade 6",
+      "domains": {
+        "RP": {
+          "code": "6.RP",
+          "name": "Ratios & Proportional Relationships",
+          "fullName": "Ratios & Proportional Relationships",
+          "clusters": {
+            "A": {
+              "name": "Understand ratio concepts and use ratio reasoning to solve problems",
+              "standards": {
+                "1": {
+                  "code": "6.RP.A.1",
+                  "name": "Understand & Describe Ratios",
+                  "text": "Understand the concept of a ratio and use ratio language to describe a ratio relationship between two quantities."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "7": {
+      "name": "Grade 7",
+      "domains": {
+        "EE": {
+          "code": "7.EE",
+          "name": "Expressions & Equations",
+          "fullName": "Expressions & Equations",
+          "clusters": {
+            "A": {
+              "name": "Use properties of operations to generate equivalent expressions",
+              "standards": {
+                "1": {
+                  "code": "7.EE.A.1",
+                  "name": "Apply Properties of Operations to Create Equivalent Expressions",
+                  "text": "Apply properties of operations as strategies to add, subtract, factor, and expand linear expressions with rational coefficients."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "8": {
+      "name": "Grade 8",
+      "domains": {
+        "F": {
+          "code": "8.F",
+          "name": "Functions",
+          "fullName": "Functions",
+          "clusters": {
+            "A": {
+              "name": "Define, evaluate, and compare functions",
+              "standards": {
+                "1": {
+                  "code": "8.F.A.1",
+                  "name": "Understand Definition of a Function",
+                  "text": "Understand that a function is a rule that assigns to each input exactly one output. The graph of a function is the set of ordered pairs consisting of an input and the corresponding output."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

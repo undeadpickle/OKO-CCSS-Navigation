@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse and select K-8 mathematics Common Core standards through an intuitive hierarchical navigation system">
+    <title>K-8 Math Common Core Standards Browser</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1 class="app-title">Common Core Math Standards</h1>
+        <div class="grade-selector-container">
+            <label for="grade-selector" class="visually-hidden">Select Grade</label>
+            <select id="grade-selector" class="grade-selector" aria-label="Select grade level">
+                <option value="K">Kindergarten</option>
+                <option value="1">Grade 1</option>
+                <option value="2">Grade 2</option>
+                <option value="3">Grade 3</option>
+                <option value="4">Grade 4</option>
+                <option value="5">Grade 5</option>
+                <option value="6">Grade 6</option>
+                <option value="7">Grade 7</option>
+                <option value="8">Grade 8</option>
+            </select>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <nav class="navigation-panel" role="navigation" aria-label="Standards Navigation">
+            <div class="nav-header">
+                <h2 class="nav-title">Standards</h2>
+            </div>
+            <div id="navigation-tree" class="navigation-tree" role="tree" aria-label="Grade standards">
+                <!-- Navigation items will be dynamically generated here -->
+            </div>
+        </nav>
+
+        <section class="preview-panel" role="main" aria-label="Standard Content Preview">
+            <div class="preview-header">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <div id="breadcrumb-path" class="breadcrumb-path">
+                        <!-- Breadcrumb will be dynamically generated here -->
+                    </div>
+                </nav>
+            </div>
+            <div id="preview-content" class="preview-content">
+                <div class="preview-placeholder">
+                    <h3>Welcome to the Common Core Standards Browser</h3>
+                    <p>Select a grade level above to begin browsing mathematics standards.</p>
+                    <p>Click on domains, clusters, or individual standards to view their content.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
