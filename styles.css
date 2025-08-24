@@ -196,13 +196,8 @@ body {
   width: 16px;
   height: 16px;
   margin-right: var(--spacing-sm);
-  transition: transform 0.2s ease;
   font-size: var(--font-size-sm);
   text-align: center;
-}
-
-.nav-item[data-expanded="true"] .expand-icon {
-  transform: rotate(90deg);
 }
 
 .nav-label {

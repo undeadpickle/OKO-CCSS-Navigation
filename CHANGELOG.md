@@ -6,8 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Standard names in preview panel titles (e.g., "Evaluate Expressions Using Groupings" instead of "Standard 5.OA.A.1")
-- StandardsTable.csv data integration for descriptive standard names
+- Complete domain and cluster content summaries for all K-8 grades
+- Toggle functionality for proper expand/collapse navigation behavior
+- Content preview for all navigation levels (domains, clusters, standards, sub-standards)
+- Comprehensive educational summaries following Common Core structure
 
 ### Planned
 - Search functionality

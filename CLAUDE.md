@@ -333,8 +333,30 @@ function getNavLabel(fullName, maxLength = 25) {
 
 3. **Selection vs Expansion Logic** - Initial confusion between expanding navigation items and selecting them for preview. Ensure clear separation between toggle/expand and select actions.
 
+4. **CSS/JavaScript Arrow Conflicts** - CSS transform rotation conflicted with JavaScript arrow symbols, causing incorrect visual states. Remove CSS animations that conflict with JavaScript state management.
+
+#### Toggle Implementation
+```javascript
+// Expansion state tracking in currentSelection
+expandedDomain: null,
+expandedCluster: null, 
+expandedStandard: null
+
+// Toggle logic separates expansion from selection
+function handleDomainClick(domainId) {
+    if (currentSelection.expandedDomain === domainId) {
+        currentSelection.expandedDomain = null;
+    } else {
+        currentSelection.expandedDomain = domainId;
+        selectDomain(domainId, getDomainData(domainId));
+    }
+}
+```
+
 #### Key Success Factors
 - Progressive implementation (HTML → CSS → JavaScript → Testing)
 - Proper use of semantic HTML and ARIA attributes
 - Clean separation of concerns in JavaScript
 - Comprehensive testing of all interaction levels
+- Complete content summaries for all navigation levels
+- Proper toggle state management with visual feedback

@@ -17,7 +17,11 @@ let currentSelection = {
     standardText: null,
     subStandard: null,
     subStandardCode: null,
-    subStandardText: null
+    subStandardText: null,
+    // Expansion state tracking
+    expandedDomain: null,
+    expandedCluster: null,
+    expandedStandard: null
 };
 
 // DOM elements
@@ -95,6 +99,7 @@ function selectInitialStandard() {
     // Auto-select first domain (Counting & Cardinality)
     const firstDomain = standardsData.grades[currentSelection.grade].domains['CC'];
     if (firstDomain) {
+        currentSelection.expandedDomain = 'CC';
         selectDomain('CC', firstDomain);
     }
 }
@@ -143,29 +148,85 @@ function handleNavClick(event) {
     const level = navItem.dataset.level;
     const id = navItem.dataset.id;
     
-    // Handle expand/collapse for parent items
-    if (button.classList.contains('nav-toggle')) {
-        event.preventDefault();
-        toggleExpansion(navItem);
-        return;
-    }
-    
-    // Handle selection
     event.preventDefault();
     
     switch (level) {
         case 'domain':
-            selectDomain(id, getDomainData(id));
+            handleDomainClick(id);
             break;
         case 'cluster':
-            selectCluster(id, getClusterData(id));
+            handleClusterClick(id);
             break;
         case 'standard':
-            selectStandard(id, getStandardData(id));
+            handleStandardClick(id);
             break;
         case 'substandard':
             selectSubStandard(id, getSubStandardData(id));
             break;
+    }
+}
+
+/**
+ * Handle domain click with toggle logic
+ */
+function handleDomainClick(domainId) {
+    if (currentSelection.expandedDomain === domainId) {
+        // Clicking same domain - just toggle expansion
+        currentSelection.expandedDomain = null;
+    } else {
+        // New domain - expand and select
+        currentSelection.expandedDomain = domainId;
+        selectDomain(domainId, getDomainData(domainId));
+        // Clear lower level expansions
+        currentSelection.expandedCluster = null;
+        currentSelection.expandedStandard = null;
+    }
+    updateNavigation();
+    updatePreview();
+    updateBreadcrumb();
+}
+
+/**
+ * Handle cluster click with toggle logic
+ */
+function handleClusterClick(clusterId) {
+    if (currentSelection.expandedCluster === clusterId) {
+        // Clicking same cluster - just toggle expansion
+        currentSelection.expandedCluster = null;
+    } else {
+        // New cluster - expand and select
+        currentSelection.expandedCluster = clusterId;
+        selectCluster(clusterId, getClusterData(clusterId));
+        // Clear lower level expansions
+        currentSelection.expandedStandard = null;
+    }
+    updateNavigation();
+    updatePreview();
+    updateBreadcrumb();
+}
+
+/**
+ * Handle standard click with toggle logic
+ */
+function handleStandardClick(standardCode) {
+    const standardData = getStandardData(standardCode);
+    
+    if (standardData.subStandards) {
+        // Standard with sub-standards - toggle behavior
+        if (currentSelection.expandedStandard === standardCode) {
+            // Clicking same standard - just toggle expansion
+            currentSelection.expandedStandard = null;
+        } else {
+            // New standard - expand and select
+            currentSelection.expandedStandard = standardCode;
+            selectStandard(standardCode, standardData);
+        }
+        updateNavigation();
+        updatePreview();
+        updateBreadcrumb();
+    } else {
+        // Standard without sub-standards - just select
+        selectStandard(standardCode, standardData);
     }
 }
 
@@ -236,7 +297,8 @@ function generateNavHTML() {
     Object.entries(domains).forEach(([domainId, domainData]) => {
         const shortName = getNavLabel(domainData.name);
         const isSelected = currentSelection.domain === domainId;
-        const isExpanded = isSelected && currentSelection.cluster;
+        const isExpanded = currentSelection.expandedDomain === domainId;
+        const showChildren = isExpanded;
         
         html += `
             <div class="nav-item domain-item ${isSelected ? 'selected' : ''}" 
@@ -244,10 +306,10 @@ function generateNavHTML() {
                  data-id="${domainId}"
                  data-expanded="${isExpanded}">
                 <button class="nav-toggle" aria-expanded="${isExpanded}" tabindex="0">
-                    <span class="expand-icon">▶</span>
+                    <span class="expand-icon">${isExpanded ? '▼' : '▶'}</span>
                     <span class="nav-label">${shortName}</span>
                 </button>
-                <div class="nav-children" ${!isExpanded ? 'hidden' : ''}>
+                <div class="nav-children" ${!showChildren ? 'hidden' : ''}>
                     ${generateClustersHTML(domainId, domainData.clusters)}
                 </div>
             </div>
@@ -269,7 +331,8 @@ function generateClustersHTML(domainId, clusters) {
         const fullClusterId = `${domainId}.${clusterId}`;
         const shortName = getNavLabel(clusterData.name);
         const isSelected = currentSelection.cluster === fullClusterId;
-        const isExpanded = isSelected && currentSelection.standard;
+        const isExpanded = currentSelection.expandedCluster === fullClusterId;
+        const showChildren = isExpanded;
         
         html += `
             <div class="nav-item cluster-item ${isSelected ? 'selected' : ''}" 
@@ -277,10 +340,10 @@ function generateClustersHTML(domainId, clusters) {
                  data-id="${fullClusterId}"
                  data-expanded="${isExpanded}">
                 <button class="nav-toggle" aria-expanded="${isExpanded}" tabindex="0">
-                    <span class="expand-icon">▶</span>
+                    <span class="expand-icon">${isExpanded ? '▼' : '▶'}</span>
                     <span class="nav-label">${shortName}</span>
                 </button>
-                <div class="nav-children" ${!isExpanded ? 'hidden' : ''}>
+                <div class="nav-children" ${!showChildren ? 'hidden' : ''}>
                     ${generateStandardsHTML(fullClusterId, clusterData.standards)}
                 </div>
             </div>
@@ -301,7 +364,8 @@ function generateStandardsHTML(clusterId, standards) {
     Object.entries(standards).forEach(([standardId, standardData]) => {
         const isSelected = currentSelection.standard === standardData.code;
         const hasSubStandards = standardData.subStandards;
-        const isExpanded = isSelected && hasSubStandards && currentSelection.subStandard;
+        const isExpanded = currentSelection.expandedStandard === standardData.code;
+        const showChildren = isExpanded;
         
         if (hasSubStandards) {
             html += `
@@ -310,10 +374,10 @@ function generateStandardsHTML(clusterId, standards) {
                      data-id="${standardData.code}"
                      data-expanded="${isExpanded}">
                     <button class="nav-toggle" aria-expanded="${isExpanded}" tabindex="0">
-                        <span class="expand-icon">▶</span>
+                        <span class="expand-icon">${isExpanded ? '▼' : '▶'}</span>
                         <span class="nav-label">${standardData.code}</span>
                     </button>
-                    <div class="nav-children" ${!isExpanded ? 'hidden' : ''}>
+                    <div class="nav-children" ${!showChildren ? 'hidden' : ''}>
                         ${generateSubStandardsHTML(standardData.subStandards)}
                     </div>
                 </div>
@@ -517,6 +581,7 @@ function generateDomainPreview() {
         <div class="standard-content">
             <h3>${domainData.fullName}</h3>
             <div class="standard-code">${currentSelection.grade}.${currentSelection.domain}</div>
+            ${domainData.text ? `<div class="standard-text">${domainData.text}</div>` : ''}
         </div>
     `;
     
@@ -529,7 +594,8 @@ function generateDomainPreview() {
         Object.entries(clusters).forEach(([clusterId, clusterData]) => {
             html += `
                 <div class="cluster-item-preview">
-                    <strong>${currentSelection.grade}.${currentSelection.domain}.${clusterId}:</strong> ${clusterData.name}
+                    <div class="cluster-header"><strong>${currentSelection.grade}.${currentSelection.domain}.${clusterId}:</strong> ${clusterData.name}</div>
+                    ${clusterData.text ? `<div class="cluster-description">${clusterData.text}</div>` : ''}
                 </div>
             `;
         });
@@ -551,6 +617,7 @@ function generateClusterPreview() {
         <div class="standard-content">
             <h3>${clusterData.name}</h3>
             <div class="standard-code">${currentSelection.grade}.${currentSelection.domain}.${currentSelection.cluster.split('.')[1]}</div>
+            ${clusterData.text ? `<div class="standard-text">${clusterData.text}</div>` : ''}
         </div>
     `;
     
@@ -561,8 +628,10 @@ function generateClusterPreview() {
         `;
         
         Object.entries(standards).forEach(([standardId, standardData]) => {
+            const standardName = standardData.name || standardData.code;
             html += `
                 <div class="standard-item-preview">
+                    <div class="standard-header"><strong>${standardName}</strong></div>
                     <div class="standard-code">${standardData.code}</div>
                     <div class="standard-text">${standardData.text}</div>
                 </div>

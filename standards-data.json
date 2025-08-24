@@ -7,9 +7,11 @@
           "code": "K.CC",
           "name": "Counting & Cardinality",
           "fullName": "Counting & Cardinality",
+          "text": "In Kindergarten, Counting & Cardinality focuses on helping students develop fundamental number sense by learning to count, recognize numerals, and understand the relationship between numbers and quantities. Students master counting sequences, connect counting to cardinality (understanding that the last number said represents the total), and begin comparing quantities. This domain establishes the critical foundation for all future mathematical learning by ensuring students understand what numbers represent and how they relate to each other. These skills prepare students for addition and subtraction concepts in first grade.",
           "clusters": {
             "A": {
               "name": "Know number names and the count sequence",
+              "text": "Students learn the counting sequence to 100, practice counting forward from various starting points, and connect written numerals with their names and quantities.",
               "standards": {
                 "1": {
                   "code": "K.CC.A.1",
@@ -30,6 +32,7 @@
             },
             "B": {
               "name": "Count to tell the number of objects",
+              "text": "Students develop one-to-one correspondence, understand that counting tells 'how many,' and recognize that the arrangement of objects doesn't affect the total count.",
               "standards": {
                 "4": {
                   "code": "K.CC.B.4",
@@ -66,9 +69,11 @@
           "code": "K.OA",
           "name": "Operations & Algebraic Thinking",
           "fullName": "Operations & Algebraic Thinking",
+          "text": "In Kindergarten, Operations & Algebraic Thinking introduces students to the foundational concepts of addition and subtraction through concrete representations and problem-solving situations. Students learn to represent mathematical situations using objects, drawings, and eventually symbols, while developing fluency with basic facts within 5. The emphasis on multiple representations helps students understand the meaning behind operations rather than just memorizing procedures. This work prepares students for more formal arithmetic in first grade while building algebraic reasoning skills.",
           "clusters": {
             "A": {
               "name": "Understand addition, and understand subtraction",
+              "text": "Students explore addition and subtraction through various representations, solve word problems within 10, and learn to decompose numbers in multiple ways to build number flexibility and fluency within 5.",
               "standards": {
                 "1": {
                   "code": "K.OA.A.1",
@@ -108,9 +113,11 @@
           "code": "1.OA",
           "name": "Operations & Algebraic Thinking",
           "fullName": "Operations & Algebraic Thinking",
+          "text": "In Grade 1, Operations & Algebraic Thinking focuses on developing fluency with addition and subtraction within 20 while building students' understanding of the relationship between these operations. Students learn to solve a variety of word problem types, apply properties of operations as problem-solving strategies, and work with equations using symbols for unknown numbers. The domain emphasizes both procedural fluency and conceptual understanding, helping students see patterns and relationships in numbers. This foundation prepares students for multi-digit computation and more complex algebraic reasoning in later grades.",
           "clusters": {
             "A": {
               "name": "Represent and solve problems involving addition and subtraction",
+              "text": "Students solve word problems involving various addition and subtraction situations within 20, using objects, drawings, and equations with unknowns in all positions.",
               "standards": {
                 "1": {
                   "code": "1.OA.A.1",
@@ -126,6 +133,7 @@
             },
             "B": {
               "name": "Understand and apply properties of operations and the relationship between addition and subtraction",
+              "text": "Students learn commutative and associative properties of addition and understand subtraction as finding an unknown addend, building flexibility in computation strategies.",
               "standards": {
                 "3": {
                   "code": "1.OA.B.3",
@@ -145,9 +153,11 @@
           "code": "1.MD",
           "name": "Measurement & Data",
           "fullName": "Measurement & Data",
+          "text": "In Grade 1, Measurement & Data introduces students to comparing and measuring length using non-standard units and organizing information through simple data displays. Students learn to order objects by length, measure using iterating length units, and work with time and money in practical contexts. The domain also introduces students to representing and interpreting data, connecting mathematics to real-world situations. These measurement and data skills provide practical applications of number concepts while preparing students for standard units of measurement and more complex data analysis in later grades.",
           "clusters": {
             "A": {
               "name": "Measure lengths indirectly and by iterating length units",
+              "text": "Students order objects by length, measure lengths using non-standard units, and understand that measurement involves covering lengths with no gaps or overlaps.",
               "standards": {
                 "1": {
                   "code": "1.MD.A.1",
@@ -172,9 +182,11 @@
           "code": "2.NBT",
           "name": "Number & Operations in Base Ten",
           "fullName": "Number & Operations in Base Ten",
+          "text": "In Grade 2, Number & Operations in Base Ten deepens students' understanding of place value within 1000 while developing fluency with addition and subtraction within 100. Students learn to read, write, and compare three-digit numbers, understand place value relationships, and use place value strategies for computation. The domain emphasizes mental math strategies and the relationship between place value understanding and computational fluency. This work builds the foundation for multiplication and division with larger numbers in Grade 3.",
           "clusters": {
             "A": {
               "name": "Understand place value",
+              "text": "Students understand three-digit numbers in terms of hundreds, tens, and ones, compare numbers using place value understanding, and read and write numbers in various forms.",
               "standards": {
                 "1": {
                   "code": "2.NBT.A.1",
@@ -194,9 +206,11 @@
           "code": "3.NF",
           "name": "Number & Operations—Fractions",
           "fullName": "Number & Operations—Fractions",
+          "text": "In Grade 3, Number & Operations—Fractions introduces students to fractions as numbers for the first time, focusing on unit fractions and fractions with numerators of 1. Students develop understanding of fractions as equal parts of a whole, locate fractions on number lines, and compare fractions with the same numerator or denominator. The domain emphasizes conceptual understanding of what fractions represent rather than computational procedures. This foundational work prepares students for fraction arithmetic and more complex fraction concepts in Grades 4 and 5.",
           "clusters": {
             "A": {
               "name": "Develop understanding of fractions as numbers",
+              "text": "Students understand fractions as equal parts of a whole, represent fractions on number lines, and recognize equivalent fractions and compare fractions with same numerators or denominators.",
               "standards": {
                 "1": {
                   "code": "3.NF.A.1",
@@ -216,9 +230,11 @@
           "code": "4.MD",
           "name": "Measurement & Data",
           "fullName": "Measurement & Data",
+          "text": "In Grade 4, Measurement & Data focuses on solving problems involving measurement conversions, understanding angle measurement, and representing and interpreting data in line plots. Students learn relationships between different measurement units, measure angles with protractors, and analyze data that includes fractions. The domain connects measurement concepts to fraction understanding and develops data analysis skills. This work prepares students for more complex measurement problems and statistical concepts in later grades.",
           "clusters": {
             "A": {
               "name": "Solve problems involving measurement and conversion of measurements",
+              "text": "Students know relative sizes of measurement units, convert measurements within the same system, and solve word problems involving measurements.",
               "standards": {
                 "1": {
                   "code": "4.MD.A.1",
@@ -238,9 +254,11 @@
           "code": "5.OA",
           "name": "Operations & Algebraic Thinking",
           "fullName": "Operations & Algebraic Thinking",
+          "text": "In Grade 5, Operations & Algebraic Thinking focuses on helping students write and interpret numerical expressions using grouping symbols and analyze patterns and relationships between sequences. Students learn to use parentheses, brackets, and braces to clarify order of operations, write expressions that record calculations, and generate numerical patterns using given rules. By comparing terms in different sequences, graphing ordered pairs, and identifying relationships, students develop algebraic reasoning skills that prepare them for middle school mathematics. This work bridges arithmetic computation with the abstract thinking required for algebra.",
           "clusters": {
             "A": {
               "name": "Write and interpret numerical expressions",
+              "text": "Students use grouping symbols to structure calculations and express verbal statements symbolically, reinforcing precision in mathematical communication and order of operations.",
               "standards": {
                 "1": {
                   "code": "5.OA.A.1",
@@ -256,6 +274,7 @@
             },
             "B": {
               "name": "Analyze patterns and relationships",
+              "text": "Students generate sequences using different rules, compare corresponding terms, and graph ordered pairs to recognize and explain relationships between patterns.",
               "standards": {
                 "3": {
                   "code": "5.OA.B.3",
@@ -270,9 +289,11 @@
           "code": "5.NBT",
           "name": "Number & Operations in Base Ten",
           "fullName": "Number & Operations in Base Ten",
+          "text": "In Grade 5, Number & Operations in Base Ten extends place value understanding to decimals and focuses on developing fluency with multi-digit whole number and decimal operations. Students learn place value relationships with decimals to thousandths, multiply and divide whole numbers and decimals efficiently, and understand patterns in operations with powers of 10. The domain emphasizes both conceptual understanding and computational fluency while connecting to real-world applications. This work prepares students for ratio and proportion concepts in Grade 6.",
           "clusters": {
             "A": {
               "name": "Understand the place value system",
+              "text": "Students recognize place value patterns in multi-digit numbers and decimals, compare and round decimal numbers, and understand relationships between adjacent place values.",
               "standards": {
                 "1": {
                   "code": "5.NBT.A.1",
@@ -310,6 +331,7 @@
             },
             "B": {
               "name": "Perform operations with multi-digit whole numbers and with decimals to hundredths",
+              "text": "Students fluently multiply multi-digit whole numbers, divide with two-digit divisors, and perform all four operations with decimals.",
               "standards": {
                 "5": {
                   "code": "5.NBT.B.5",
@@ -339,9 +361,11 @@
           "code": "6.RP",
           "name": "Ratios & Proportional Relationships",
           "fullName": "Ratios & Proportional Relationships",
+          "text": "In Grade 6, Ratios & Proportional Relationships introduces students to proportional reasoning, one of the most important mathematical concepts for future success in algebra and advanced mathematics. Students learn to understand and express ratio relationships, work with unit rates and equivalent ratios, and solve problems involving proportional relationships. The domain emphasizes multiple representations of proportional relationships including tables, graphs, and equations. This foundational work in proportional reasoning prepares students for linear functions, similarity, and percentage applications in later grades.",
           "clusters": {
             "A": {
               "name": "Understand ratio concepts and use ratio reasoning to solve problems",
+              "text": "Students understand ratio relationships, find equivalent ratios, use ratios to solve unit rate problems, and apply proportional reasoning to solve real-world problems including percentages.",
               "standards": {
                 "1": {
                   "code": "6.RP.A.1",
@@ -361,9 +385,11 @@
           "code": "7.EE",
           "name": "Expressions & Equations",
           "fullName": "Expressions & Equations",
+          "text": "In Grade 7, Expressions & Equations extends algebraic reasoning to include multi-step equations and inequalities while introducing linear equation concepts. Students learn to use properties of operations to generate equivalent expressions, solve multi-step problems involving linear equations, and work with inequalities in real-world contexts. The domain emphasizes algebraic manipulation skills and mathematical modeling with linear relationships. This algebraic foundation prepares students for systems of equations and functions in Grade 8.",
           "clusters": {
             "A": {
               "name": "Use properties of operations to generate equivalent expressions",
+              "text": "Students apply properties of operations and factoring to rewrite algebraic expressions and solve problems involving linear expressions.",
               "standards": {
                 "1": {
                   "code": "7.EE.A.1",
@@ -383,9 +409,11 @@
           "code": "8.F",
           "name": "Functions",
           "fullName": "Functions",
+          "text": "In Grade 8, Functions introduces students to the concept of a function as a mathematical relationship where each input has exactly one output, laying the foundation for high school mathematics. Students learn to identify functions from tables, graphs, and equations, compare linear and nonlinear functions, and understand how functions model real-world relationships. The domain emphasizes multiple representations of functions and their applications to problem-solving. This function concept work provides essential preparation for high school algebra, geometry, and advanced mathematics courses.",
           "clusters": {
             "A": {
               "name": "Define, evaluate, and compare functions",
+              "text": "Students understand the definition of a function, identify functions using various representations, and compare properties of different functions including linear and nonlinear relationships.",
               "standards": {
                 "1": {
                   "code": "8.F.A.1",
