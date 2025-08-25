@@ -28,9 +28,6 @@
 
     <main class="main-container">
         <nav class="navigation-panel" role="navigation" aria-label="Standards Navigation">
-            <div class="nav-header">
-                <h2 class="nav-title">Standards</h2>
-            </div>
             <div id="navigation-tree" class="navigation-tree" role="tree" aria-label="Grade standards">
                 <!-- Navigation items will be dynamically generated here -->
             </div>
@@ -42,6 +39,10 @@
                     <div id="breadcrumb-path" class="breadcrumb-path">
                         <!-- Breadcrumb will be dynamically generated here -->
                     </div>
+                    <button id="save-button" class="save-button" type="button" aria-label="Save current selection" style="display: none;">
+                        <span class="save-icon">💾</span>
+                        <span class="save-text">Save</span>
+                    </button>
                 </nav>
             </div>
             <div id="preview-content" class="preview-content">
@@ -53,6 +54,26 @@
             </div>
         </section>
     </main>
+
+    <!-- Save Confirmation Modal -->
+    <div id="save-modal" class="save-modal" role="dialog" aria-labelledby="save-modal-title" aria-describedby="save-modal-description" style="display: none;">
+        <div class="save-modal-overlay" aria-hidden="true"></div>
+        <div class="save-modal-content">
+            <div class="save-modal-header">
+                <h2 id="save-modal-title" class="save-modal-title">Standard Saved</h2>
+            </div>
+            <div class="save-modal-body">
+                <p id="save-modal-description" class="save-modal-description">
+                    <!-- Save confirmation message will be populated here -->
+                </p>
+            </div>
+            <div class="save-modal-footer">
+                <button id="save-modal-ok" class="save-modal-ok-button" type="button" aria-label="Close confirmation dialog">
+                    OK
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

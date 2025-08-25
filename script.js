@@ -29,6 +29,10 @@ const gradeSelector = document.getElementById('grade-selector');
 const navigationTree = document.getElementById('navigation-tree');
 const breadcrumbPath = document.getElementById('breadcrumb-path');
 const previewContent = document.getElementById('preview-content');
+const saveButton = document.getElementById('save-button');
+const saveModal = document.getElementById('save-modal');
+const saveModalDescription = document.getElementById('save-modal-description');
+const saveModalOkButton = document.getElementById('save-modal-ok');
 
 // Shortened navigation labels for better UX
 const navLabels = {
@@ -82,7 +86,12 @@ function setupEventListeners() {
     navigationTree.addEventListener('click', handleNavClick);
     navigationTree.addEventListener('keydown', handleKeyboard);
     
-    // Focus management
+    // Save functionality
+    saveButton.addEventListener('click', handleSaveClick);
+    saveModalOkButton.addEventListener('click', closeSaveModal);
+    saveModal.addEventListener('click', handleModalOverlayClick);
+    
+    // Focus management and global keyboard shortcuts
     document.addEventListener('keydown', handleGlobalKeyboard);
 }
 
@@ -274,6 +283,18 @@ function handleGlobalKeyboard(event) {
         // Close all expanded sections
         const expandedItems = navigationTree.querySelectorAll('.nav-item[data-expanded="true"]');
         expandedItems.forEach(item => collapseItem(item));
+        // Close save modal if open
+        if (saveModal.style.display !== 'none') {
+            closeSaveModal();
+        }
+    }
+    
+    // Handle Ctrl+S shortcut
+    if (event.ctrlKey && event.key === 's') {
+        event.preventDefault();
+        if (isContentSaveable()) {
+            handleSaveClick();
+        }
     }
 }
 
@@ -543,6 +564,7 @@ function updateNavigation() {
 function updatePreview() {
     const content = generatePreviewHTML();
     previewContent.innerHTML = content;
+    updateSaveBar();
 }
 
 /**
@@ -874,6 +896,132 @@ function showError(message) {
             <p>${message}</p>
         </div>
     `;
+}
+
+/**
+ * Save functionality
+ */
+
+/**
+ * Update save button visibility
+ */
+function updateSaveBar() {
+    if (isContentSaveable()) {
+        saveButton.style.display = 'flex';
+    } else {
+        saveButton.style.display = 'none';
+    }
+}
+
+/**
+ * Check if current content is saveable
+ */
+function isContentSaveable() {
+    return currentSelection.gradeName && (
+        currentSelection.domainName || 
+        currentSelection.clusterName || 
+        currentSelection.standardCode ||
+        currentSelection.subStandardCode
+    );
+}
+
+/**
+ * Generate descriptive name for current selection
+ */
+function generateSaveSelectionName() {
+    const parts = [];
+    
+    if (currentSelection.gradeName) parts.push(currentSelection.gradeName);
+    if (currentSelection.domainName) parts.push(currentSelection.domainName);
+    if (currentSelection.clusterName) parts.push(currentSelection.clusterName);
+    if (currentSelection.standardCode) parts.push(currentSelection.standardCode);
+    if (currentSelection.subStandardCode && currentSelection.subStandardCode !== currentSelection.standardCode) {
+        parts.push(currentSelection.subStandardCode);
+    }
+    
+    return parts.join(' › ');
+}
+
+/**
+ * Handle save button click
+ */
+function handleSaveClick() {
+    if (!isContentSaveable()) return;
+    
+    const selectionName = generateSaveSelectionName();
+    saveModalDescription.textContent = `Successfully saved: ${selectionName}`;
+    showSaveModal();
+    
+    // Add success animation to save button
+    saveButton.classList.add('success');
+    setTimeout(() => {
+        saveButton.classList.remove('success');
+    }, 600);
+}
+
+/**
+ * Show save modal
+ */
+function showSaveModal() {
+    saveModal.style.display = 'flex';
+    // Trigger reflow before adding show class for animation
+    saveModal.offsetHeight;
+    saveModal.classList.add('show');
+    
+    // Focus the OK button for accessibility
+    saveModalOkButton.focus();
+    
+    // Trap focus within modal
+    trapFocus(saveModal);
+}
+
+/**
+ * Close save modal
+ */
+function closeSaveModal() {
+    saveModal.classList.remove('show');
+    setTimeout(() => {
+        saveModal.style.display = 'none';
+    }, 300);
+    
+    // Return focus to save button
+    saveButton.focus();
+}
+
+/**
+ * Handle modal overlay click (close modal if clicking outside content)
+ */
+function handleModalOverlayClick(event) {
+    if (event.target === saveModal || event.target.classList.contains('save-modal-overlay')) {
+        closeSaveModal();
+    }
+}
+
+/**
+ * Trap focus within modal for accessibility
+ */
+function trapFocus(element) {
+    const focusableElements = element.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+    
+    element.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            if (e.shiftKey) {
+                if (document.activeElement === firstElement) {
+                    lastElement.focus();
+                    e.preventDefault();
+                }
+            } else {
+                if (document.activeElement === lastElement) {
+                    firstElement.focus();
+                    e.preventDefault();
+                }
+            }
+        }
+    });
 }
 
 // Initialize application when DOM is loaded

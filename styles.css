@@ -129,19 +129,6 @@ body {
   flex-direction: column;
 }
 
-.nav-header {
-  padding: var(--spacing-lg);
-  border-bottom: 1px solid var(--border-light);
-  background-color: var(--expanded-bg);
-}
-
-.nav-title {
-  margin: 0;
-  font-size: var(--font-size-xl);
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
 .navigation-tree {
   flex: 1;
   padding: var(--spacing-md);
@@ -258,6 +245,10 @@ body {
 
 .breadcrumb {
   margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-md);
 }
 
 .breadcrumb-path {
@@ -266,6 +257,8 @@ body {
   flex-wrap: wrap;
   font-size: var(--font-size-sm);
   color: var(--text-secondary);
+  flex: 1;
+  min-width: 0;
 }
 
 .breadcrumb-item {
@@ -406,4 +399,169 @@ body {
     --selected-bg: #d1e7ff;
     --focus-outline: #000000;
   }
+}
+
+/* Save Button */
+.save-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.save-button:hover {
+  background-color: #1565c0;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(25, 118, 210, 0.3);
+}
+
+.save-button:focus {
+  outline: 2px solid var(--focus-outline);
+  outline-offset: 2px;
+}
+
+.save-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(25, 118, 210, 0.3);
+}
+
+.save-icon {
+  font-size: var(--font-size-md);
+  line-height: 1;
+}
+
+.save-text {
+  font-size: var(--font-size-sm);
+}
+
+/* Save Modal */
+.save-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.save-modal.show {
+  opacity: 1;
+}
+
+.save-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+.save-modal-content {
+  position: relative;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.save-modal.show .save-modal-content {
+  transform: scale(1);
+}
+
+.save-modal-header {
+  padding: var(--spacing-lg) var(--spacing-lg) 0 var(--spacing-lg);
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.save-modal-title {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: 500;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.save-modal-body {
+  padding: 0 var(--spacing-lg);
+  text-align: center;
+}
+
+.save-modal-description {
+  margin: 0 0 var(--spacing-lg) 0;
+  font-size: var(--font-size-md);
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.save-modal-footer {
+  padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+  text-align: center;
+}
+
+.save-modal-ok-button {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 80px;
+}
+
+.save-modal-ok-button:hover {
+  background-color: #1565c0;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(25, 118, 210, 0.3);
+}
+
+.save-modal-ok-button:focus {
+  outline: 2px solid var(--focus-outline);
+  outline-offset: 2px;
+}
+
+.save-modal-ok-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(25, 118, 210, 0.3);
+}
+
+/* Animation for save success */
+@keyframes saveSuccess {
+  0% {
+    background-color: var(--primary-color);
+  }
+  50% {
+    background-color: #4caf50;
+  }
+  100% {
+    background-color: var(--primary-color);
+  }
+}
+
+.save-button.success {
+  animation: saveSuccess 0.6s ease;
 }
