@@ -184,6 +184,27 @@ function toggleExpansion(element) {
 }
 ```
 
+#### Navigation Label Display
+```javascript
+// Standards show descriptive names instead of codes
+function generateStandardsHTML(clusterId, standards) {
+    Object.entries(standards).forEach(([standardId, standardData]) => {
+        const displayName = standardData.name || standardData.code;
+        // Uses name like "Evaluate Expressions Using Groupings" 
+        // instead of code like "5.OA.A.1"
+    });
+}
+
+// Sub-standards also use names from JSON data
+function generateSubStandardsHTML(subStandards) {
+    Object.entries(subStandards).forEach(([subId, subData]) => {
+        const displayName = subData.name || subData.code;
+        // Uses name like "Count Objects Using Standard Order"
+        // instead of code like "K.CC.B.4.a"
+    });
+}
+```
+
 #### Breadcrumb Implementation
 ```javascript
 // Generate breadcrumb from current selection

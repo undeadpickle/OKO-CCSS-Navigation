@@ -366,6 +366,7 @@ function generateStandardsHTML(clusterId, standards) {
         const hasSubStandards = standardData.subStandards;
         const isExpanded = currentSelection.expandedStandard === standardData.code;
         const showChildren = isExpanded;
+        const displayName = standardData.name || standardData.code;
         
         if (hasSubStandards) {
             html += `
@@ -375,7 +376,7 @@ function generateStandardsHTML(clusterId, standards) {
                      data-expanded="${isExpanded}">
                     <button class="nav-toggle" aria-expanded="${isExpanded}" tabindex="0">
                         <span class="expand-icon">${isExpanded ? '▼' : '▶'}</span>
-                        <span class="nav-label">${standardData.code}</span>
+                        <span class="nav-label">${displayName}</span>
                     </button>
                     <div class="nav-children" ${!showChildren ? 'hidden' : ''}>
                         ${generateSubStandardsHTML(standardData.subStandards)}
@@ -388,7 +389,7 @@ function generateStandardsHTML(clusterId, standards) {
                      data-level="standard" 
                      data-id="${standardData.code}">
                     <button class="nav-link" tabindex="0">
-                        <span class="nav-label">${standardData.code}</span>
+                        <span class="nav-label">${displayName}</span>
                     </button>
                 </div>
             `;
@@ -408,13 +409,14 @@ function generateSubStandardsHTML(subStandards) {
     
     Object.entries(subStandards).forEach(([subId, subData]) => {
         const isSelected = currentSelection.subStandard === subData.code;
+        const displayName = subData.name || subData.code;
         
         html += `
             <div class="nav-item substandard-item ${isSelected ? 'selected' : ''}" 
                  data-level="substandard" 
                  data-id="${subData.code}">
                 <button class="nav-link" tabindex="0">
-                    <span class="nav-label">${subData.code}</span>
+                    <span class="nav-label">${displayName}</span>
                 </button>
             </div>
         `;

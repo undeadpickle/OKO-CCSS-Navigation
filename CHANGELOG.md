@@ -6,10 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Navigation now displays descriptive names instead of Common Core codes
+  - Standards show names like "Evaluate Expressions Using Groupings" instead of "5.OA.A.1"
+  - Sub-standards show names like "Count Objects Using Standard Order" instead of "K.CC.B.4.a"
 - Complete domain and cluster content summaries for all K-8 grades
 - Toggle functionality for proper expand/collapse navigation behavior
 - Content preview for all navigation levels (domains, clusters, standards, sub-standards)
 - Comprehensive educational summaries following Common Core structure
+
+### Changed
+- Improved navigation user experience with descriptive labels
+- Simplified code by using existing JSON name data instead of generating names
 
 ### Planned
 - Search functionality
