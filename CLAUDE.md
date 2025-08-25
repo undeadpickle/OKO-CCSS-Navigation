@@ -96,7 +96,8 @@ The application maintains:
 - Current grade selection
 - Expanded/collapsed navigation nodes
 - Currently selected standard
-- Navigation history (optional)
+- Navigation panel width (session-based, resets to default on refresh)
+- Save button visibility and context
 
 ### User Interactions
 
@@ -106,6 +107,8 @@ The application maintains:
 3. **Cluster Click**: Expands to show standards
 4. **Standard Click**: Shows full content in preview
 5. **Sub-standard Click**: Shows specific sub-standard
+6. **Panel Resize**: Drag handle allows width adjustment (250px-600px)
+7. **Save Action**: Button click or Ctrl+S saves current selection
 
 #### Visual Feedback
 - Hover states on interactive elements
@@ -223,7 +226,37 @@ function generateBreadcrumb(selection) {
 }
 ```
 
-#### Shortened Navigation Labels
+#### Resizable Panel Implementation
+```javascript
+// Panel resize functionality
+let isResizing = false;
+let startX = 0;
+let startWidth = 0;
+
+function initResize(e) {
+    isResizing = true;
+    startX = e.clientX;
+    startWidth = navigationPanel.offsetWidth;
+    
+    document.addEventListener('mousemove', doResize);
+    document.addEventListener('mouseup', stopResize);
+    document.body.style.userSelect = 'none';
+    document.body.style.cursor = 'col-resize';
+}
+
+function doResize(e) {
+    if (!isResizing) return;
+    
+    const diff = e.clientX - startX;
+    const newWidth = startWidth + diff;
+    const constrainedWidth = Math.max(250, Math.min(600, newWidth));
+    
+    navigationPanel.style.width = constrainedWidth + 'px';
+    document.documentElement.style.setProperty('--nav-panel-width', constrainedWidth + 'px');
+}
+```
+
+#### Navigation Labels with Dynamic Text
 ```javascript
 // Map of full names to shortened versions for nav
 const navLabels = {
@@ -234,11 +267,10 @@ const navLabels = {
   'Counting & Cardinality': 'Counting & Cardinality'
 };
 
-// Function to get appropriate label
-function getNavLabel(fullName, maxLength = 25) {
+// Function to get appropriate label (no length restriction for resizable panel)
+function getNavLabel(fullName) {
   if (navLabels[fullName]) return navLabels[fullName];
-  if (fullName.length <= maxLength) return fullName;
-  return fullName.substring(0, maxLength - 3) + '...';
+  return fullName; // Allow full text to display when panel is wide enough
 }
 ```
 
@@ -266,19 +298,57 @@ function getNavLabel(fullName, maxLength = 25) {
 </nav>
 ```
 
+#### Save Functionality Implementation
+```javascript
+// Save button integrated in breadcrumb area
+function updateSaveBar() {
+    if (isContentSaveable()) {
+        saveButton.style.display = 'flex';
+    } else {
+        saveButton.style.display = 'none';
+    }
+}
+
+function handleSaveClick() {
+    if (!isContentSaveable()) return;
+    
+    const selectionName = generateSaveSelectionName();
+    saveModalDescription.textContent = `Successfully saved: ${selectionName}`;
+    showSaveModal();
+    
+    // Add success animation
+    saveButton.classList.add('success');
+    setTimeout(() => {
+        saveButton.classList.remove('success');
+    }, 600);
+}
+
+// Keyboard shortcut support
+document.addEventListener('keydown', (event) => {
+    if (event.ctrlKey && event.key === 's') {
+        event.preventDefault();
+        if (isContentSaveable()) {
+            handleSaveClick();
+        }
+    }
+});
+```
+
 ### Testing Approach
 1. Test navigation at each level
 2. Verify selection states
 3. Check keyboard navigation
-4. Test with sample standards
-5. Verify responsive behavior
+4. Test panel resizing functionality
+5. Test save functionality across all hierarchy levels
+6. Verify responsive behavior
 
 ### Known Constraints
 - Single selection only
 - No search functionality (MVP)
 - Limited initial content
 - Desktop-first design
-- No data persistence
+- No data persistence (panel width resets on refresh)
+- Save functionality is MVP prototype only (no actual data storage)
 
 ### Style Guide
 

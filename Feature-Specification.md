@@ -64,21 +64,29 @@ The interface supports multiple interaction states:
 5. **Standard Selection**: User clicks standard to view content and any sub-standards
 6. **Content Review**: Full standard content appears in preview panel with breadcrumb
 7. **Sub-standard Access**: User can click individual sub-standards if available
-8. **Navigation Continuation**: User can select different items while maintaining hierarchy state
+8. **Panel Resizing**: User can drag the navigation panel border to adjust width and view more text
+9. **Save Action**: User clicks save button (or presses Ctrl+S) to save current selection
+10. **Navigation Continuation**: User can select different items while maintaining hierarchy state
 
 ### Designs & Prototypes
 **Key UI Components:**
 
 - **Header**: Application title with integrated grade selector dropdown
-- **Navigation Panel (Left, 400px width)**: 
+- **Navigation Panel (Left, resizable 250px-600px, default 400px)**: 
   - Hierarchical tree structure with indented levels
+  - Resizable width with drag handle for viewing more text
   - Expand/collapse arrows for parent items
+  - Dynamic text display that expands with panel width
   - Clear typography hierarchy with size differentiation
   - Selection highlighting and hover states
 - **Preview Panel (Right)**: 
-  - Breadcrumb navigation showing current path
+  - Breadcrumb navigation with integrated save button
   - Full content display with proper text formatting
   - Hierarchy-aware content presentation
+- **Save Functionality**: 
+  - Save button integrated in breadcrumb area (right-aligned)
+  - Modal confirmation dialog
+  - Keyboard shortcut support (Ctrl+S)
 - **Visual Hierarchy**: Typography scale from 24px (grade) down to 12px (codes)
 - **Accessibility**: Full keyboard navigation, ARIA labels, screen reader support
 
@@ -184,9 +192,11 @@ currentSelection = {
 
 **Key Technical Features:**
 - **Progressive Disclosure**: Dynamic DOM generation with show/hide functionality
+- **Resizable Interface**: Drag-to-resize navigation panel with constraints and visual feedback
 - **Event Delegation**: Efficient event handling for dynamically generated content
+- **Save Functionality**: Complete save workflow with modal confirmation and keyboard shortcuts
 - **Keyboard Navigation**: Full tab order and enter/space key support
-- **Responsive Design**: CSS Grid layout with custom property-based theming
+- **Responsive Layout**: Flexbox layout with resizable panels and custom property-based theming
 - **Performance Optimization**: Minimal DOM manipulation, CSS transforms for animations
 - **Browser Compatibility**: Modern browser support (Chrome 90+, Firefox 88+, Safari 14+, Edge 90+)
 

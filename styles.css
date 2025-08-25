@@ -114,8 +114,7 @@ body {
 
 /* Main layout */
 .main-container {
-  display: grid;
-  grid-template-columns: var(--nav-panel-width) 1fr;
+  display: flex;
   height: calc(100vh - var(--header-height));
   overflow: hidden;
 }
@@ -127,11 +126,53 @@ body {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  position: relative;
+  width: var(--nav-panel-width);
+  min-width: 250px;
+  max-width: 600px;
+  resize: horizontal;
 }
 
 .navigation-tree {
   flex: 1;
   padding: var(--spacing-md);
+  overflow-x: hidden;
+}
+
+/* Resize handle */
+.resize-handle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  cursor: col-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  user-select: none;
+}
+
+.resize-handle:hover {
+  background-color: rgba(25, 118, 210, 0.1);
+}
+
+.resize-handle-bar {
+  width: 2px;
+  height: 40px;
+  background-color: var(--border-light);
+  border-radius: 1px;
+  transition: all 0.2s ease;
+}
+
+.resize-handle:hover .resize-handle-bar {
+  background-color: var(--primary-color);
+  height: 60px;
+}
+
+.resize-handle:active .resize-handle-bar {
+  background-color: var(--primary-color);
 }
 
 /* Navigation items */
@@ -143,7 +184,7 @@ body {
 
 .nav-toggle, .nav-link {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   padding: var(--spacing-sm) var(--spacing-md);
   border: none;
@@ -156,6 +197,7 @@ body {
   font-family: inherit;
   color: inherit;
   text-decoration: none;
+  min-height: 36px;
 }
 
 .nav-toggle:hover, .nav-link:hover {
@@ -183,15 +225,17 @@ body {
   width: 16px;
   height: 16px;
   margin-right: var(--spacing-sm);
+  margin-top: 2px;
   font-size: var(--font-size-sm);
   text-align: center;
+  flex-shrink: 0;
 }
 
 .nav-label {
   flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.4;
 }
 
 .nav-children {
@@ -235,6 +279,8 @@ body {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  flex: 1;
+  min-width: 0;
 }
 
 .preview-header {
@@ -370,14 +416,19 @@ body {
 
 @media (max-width: 768px) {
   .main-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
+    flex-direction: column;
   }
   
   .navigation-panel {
     border-right: none;
     border-bottom: 1px solid var(--border-light);
     max-height: 40vh;
+    width: 100% !important;
+    resize: none;
+  }
+  
+  .resize-handle {
+    display: none;
   }
   
   :root {

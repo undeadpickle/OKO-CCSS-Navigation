@@ -9,7 +9,10 @@ This application provides educators and curriculum developers with an efficient 
 ## Features
 
 - **Hierarchical Navigation**: Browse standards from Grade K through 8
+- **Resizable Navigation Panel**: Drag to adjust width (250px-600px) to view more text
 - **Progressive Disclosure**: Navigate without overwhelming complexity
+- **Dynamic Text Display**: Navigation labels expand with panel width
+- **Save Functionality**: Save selections with button click or Ctrl+S keyboard shortcut
 - **Clear Selection States**: Always know what's selected
 - **Full Content Preview**: See complete standard text before selection
 - **Intuitive Wayfinding**: Always know your location in the hierarchy
@@ -21,6 +24,8 @@ This application provides educators and curriculum developers with an efficient 
 3. Click on domains to expand and see clusters
 4. Click on clusters to see standards
 5. Select any item to view its full content
+6. **Resize the panel**: Drag the right edge of the navigation panel to see more text
+7. **Save selections**: Click the save button or press Ctrl+S to save current selection
 
 ## Project Structure
 
@@ -107,7 +112,8 @@ Edit `standards-data.json` following the existing structure:
 - `Tab` - Navigate through interactive elements
 - `Enter` - Select/expand focused item
 - `Space` - Toggle expansion (parent items)
-- `Escape` - Close expanded sections
+- `Ctrl+S` - Save current selection
+- `Escape` - Close expanded sections or save modal
 
 ## Accessibility
 
@@ -120,9 +126,11 @@ Edit `standards-data.json` following the existing structure:
 
 ✅ **Complete** - Full implementation with all core features working:
 - Hierarchical navigation (Grade → Domain → Cluster → Standard → Sub-standard)
+- Resizable navigation panel (250px-600px) with dynamic text display
 - Progressive disclosure with expand/collapse
-- Content preview with breadcrumb navigation
-- Keyboard navigation support
+- Save functionality with modal confirmation and keyboard shortcuts
+- Content preview with integrated save button in breadcrumb area
+- Keyboard navigation support (Tab, Enter, Space, Ctrl+S, Escape)
 - Standards with sub-standards display correctly
 
 ## Contributing

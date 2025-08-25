@@ -33,6 +33,8 @@ const saveButton = document.getElementById('save-button');
 const saveModal = document.getElementById('save-modal');
 const saveModalDescription = document.getElementById('save-modal-description');
 const saveModalOkButton = document.getElementById('save-modal-ok');
+const resizeHandle = document.getElementById('resize-handle');
+const navigationPanel = document.querySelector('.navigation-panel');
 
 // Shortened navigation labels for better UX
 const navLabels = {
@@ -90,6 +92,9 @@ function setupEventListeners() {
     saveButton.addEventListener('click', handleSaveClick);
     saveModalOkButton.addEventListener('click', closeSaveModal);
     saveModal.addEventListener('click', handleModalOverlayClick);
+    
+    // Resize functionality
+    resizeHandle.addEventListener('mousedown', initResize);
     
     // Focus management and global keyboard shortcuts
     document.addEventListener('keydown', handleGlobalKeyboard);
@@ -787,12 +792,12 @@ function generateBreadcrumb() {
 }
 
 /**
- * Get appropriate navigation label (shortened if needed)
+ * Get appropriate navigation label
  */
-function getNavLabel(fullName, maxLength = 25) {
+function getNavLabel(fullName) {
+    // Use shortened labels for better readability, otherwise use full name
     if (navLabels[fullName]) return navLabels[fullName];
-    if (fullName.length <= maxLength) return fullName;
-    return fullName.substring(0, maxLength - 3) + '...';
+    return fullName;
 }
 
 /**
@@ -1022,6 +1027,67 @@ function trapFocus(element) {
             }
         }
     });
+}
+
+/**
+ * Panel resize functionality
+ */
+let isResizing = false;
+let startX = 0;
+let startWidth = 0;
+
+/**
+ * Initialize panel resize
+ */
+function initResize(e) {
+    isResizing = true;
+    startX = e.clientX;
+    startWidth = navigationPanel.offsetWidth;
+    
+    document.addEventListener('mousemove', doResize);
+    document.addEventListener('mouseup', stopResize);
+    
+    // Prevent text selection during resize
+    document.body.style.userSelect = 'none';
+    document.body.style.cursor = 'col-resize';
+    
+    e.preventDefault();
+}
+
+/**
+ * Perform panel resize
+ */
+function doResize(e) {
+    if (!isResizing) return;
+    
+    const diff = e.clientX - startX;
+    const newWidth = startWidth + diff;
+    
+    // Enforce min and max width constraints
+    const minWidth = 250;
+    const maxWidth = 600;
+    const constrainedWidth = Math.max(minWidth, Math.min(maxWidth, newWidth));
+    
+    navigationPanel.style.width = constrainedWidth + 'px';
+    
+    // Update CSS custom property for consistency
+    document.documentElement.style.setProperty('--nav-panel-width', constrainedWidth + 'px');
+    
+    e.preventDefault();
+}
+
+/**
+ * Stop panel resize
+ */
+function stopResize() {
+    isResizing = false;
+    
+    document.removeEventListener('mousemove', doResize);
+    document.removeEventListener('mouseup', stopResize);
+    
+    // Restore normal cursor and text selection
+    document.body.style.userSelect = '';
+    document.body.style.cursor = '';
 }
 
 // Initialize application when DOM is loaded
