@@ -21,7 +21,10 @@ let currentSelection = {
     // Expansion state tracking
     expandedDomain: null,
     expandedCluster: null,
-    expandedStandard: null
+    expandedStandard: null,
+    // Active selection tracking
+    activeSelectionLevel: null,
+    activeSelectionId: null
 };
 
 // DOM elements
@@ -143,7 +146,14 @@ function handleGradeChange(event) {
         standardText: null,
         subStandard: null,
         subStandardCode: null,
-        subStandardText: null
+        subStandardText: null,
+        // Expansion state tracking
+        expandedDomain: null,
+        expandedCluster: null,
+        expandedStandard: null,
+        // Active selection tracking
+        activeSelectionLevel: null,
+        activeSelectionId: null
     };
     
     updateNavigation();
@@ -322,12 +332,13 @@ function generateNavHTML() {
     
     Object.entries(domains).forEach(([domainId, domainData]) => {
         const shortName = getNavLabel(domainData.name);
-        const isSelected = currentSelection.domain === domainId;
+        const isActive = (currentSelection.activeSelectionLevel === 'domain' && currentSelection.activeSelectionId === domainId);
+        const isInPath = (currentSelection.domain === domainId && currentSelection.activeSelectionLevel !== 'domain');
         const isExpanded = currentSelection.expandedDomain === domainId;
         const showChildren = isExpanded;
         
         html += `
-            <div class="nav-item domain-item ${isSelected ? 'selected' : ''}" 
+            <div class="nav-item domain-item ${isActive ? 'selected' : ''} ${isInPath ? 'in-path' : ''}" 
                  data-level="domain" 
                  data-id="${domainId}"
                  data-expanded="${isExpanded}">
@@ -356,12 +367,13 @@ function generateClustersHTML(domainId, clusters) {
     Object.entries(clusters).forEach(([clusterId, clusterData]) => {
         const fullClusterId = `${domainId}.${clusterId}`;
         const shortName = getNavLabel(clusterData.name);
-        const isSelected = currentSelection.cluster === fullClusterId;
+        const isActive = (currentSelection.activeSelectionLevel === 'cluster' && currentSelection.activeSelectionId === fullClusterId);
+        const isInPath = (currentSelection.cluster === fullClusterId && currentSelection.activeSelectionLevel !== 'cluster');
         const isExpanded = currentSelection.expandedCluster === fullClusterId;
         const showChildren = isExpanded;
         
         html += `
-            <div class="nav-item cluster-item ${isSelected ? 'selected' : ''}" 
+            <div class="nav-item cluster-item ${isActive ? 'selected' : ''} ${isInPath ? 'in-path' : ''}" 
                  data-level="cluster" 
                  data-id="${fullClusterId}"
                  data-expanded="${isExpanded}">
@@ -388,7 +400,9 @@ function generateStandardsHTML(clusterId, standards) {
     let html = '';
     
     Object.entries(standards).forEach(([standardId, standardData]) => {
-        const isSelected = currentSelection.standard === standardData.code;
+        const isActive = (currentSelection.activeSelectionLevel === 'standard' && currentSelection.activeSelectionId === standardData.code) ||
+                        (currentSelection.standard === standardData.code && !currentSelection.subStandard);
+        const isInPath = (currentSelection.standard === standardData.code && currentSelection.activeSelectionLevel === 'substandard');
         const hasSubStandards = standardData.subStandards;
         const isExpanded = currentSelection.expandedStandard === standardData.code;
         const showChildren = isExpanded;
@@ -396,7 +410,7 @@ function generateStandardsHTML(clusterId, standards) {
         
         if (hasSubStandards) {
             html += `
-                <div class="nav-item standard-item ${isSelected ? 'selected' : ''}" 
+                <div class="nav-item standard-item ${isActive ? 'selected' : ''} ${isInPath ? 'in-path' : ''}" 
                      data-level="standard" 
                      data-id="${standardData.code}"
                      data-expanded="${isExpanded}">
@@ -411,7 +425,7 @@ function generateStandardsHTML(clusterId, standards) {
             `;
         } else {
             html += `
-                <div class="nav-item standard-item ${isSelected ? 'selected' : ''}" 
+                <div class="nav-item standard-item ${isActive ? 'selected' : ''} ${isInPath ? 'in-path' : ''}" 
                      data-level="standard" 
                      data-id="${standardData.code}">
                     <button class="nav-link" tabindex="0">
@@ -434,11 +448,12 @@ function generateSubStandardsHTML(subStandards) {
     let html = '';
     
     Object.entries(subStandards).forEach(([subId, subData]) => {
-        const isSelected = currentSelection.subStandard === subData.code;
+        const isActive = (currentSelection.activeSelectionLevel === 'substandard' && currentSelection.activeSelectionId === subData.code);
+        const isInPath = false; // Sub-standards are the deepest level, no path context needed
         const displayName = subData.name || subData.code;
         
         html += `
-            <div class="nav-item substandard-item ${isSelected ? 'selected' : ''}" 
+            <div class="nav-item substandard-item ${isActive ? 'selected' : ''}" 
                  data-level="substandard" 
                  data-id="${subData.code}">
                 <button class="nav-link" tabindex="0">
@@ -465,6 +480,9 @@ function selectDomain(domainId, domainData) {
     currentSelection.subStandard = null;
     currentSelection.subStandardCode = null;
     currentSelection.subStandardText = null;
+    // Set active selection tracking
+    currentSelection.activeSelectionLevel = 'domain';
+    currentSelection.activeSelectionId = domainId;
     
     updateNavigation();
     updatePreview();
@@ -485,6 +503,9 @@ function selectCluster(clusterId, clusterData) {
     currentSelection.subStandard = null;
     currentSelection.subStandardCode = null;
     currentSelection.subStandardText = null;
+    // Set active selection tracking
+    currentSelection.activeSelectionLevel = 'cluster';
+    currentSelection.activeSelectionId = clusterId;
     
     updateNavigation();
     updatePreview();
@@ -501,6 +522,9 @@ function selectStandard(standardCode, standardData) {
     currentSelection.subStandard = null;
     currentSelection.subStandardCode = null;
     currentSelection.subStandardText = null;
+    // Set active selection tracking
+    currentSelection.activeSelectionLevel = 'standard';
+    currentSelection.activeSelectionId = standardCode;
     
     updateNavigation();
     updatePreview();
@@ -514,6 +538,9 @@ function selectSubStandard(subStandardCode, subStandardData) {
     currentSelection.subStandard = subStandardCode;
     currentSelection.subStandardCode = subStandardCode;
     currentSelection.subStandardText = subStandardData.text;
+    // Set active selection tracking
+    currentSelection.activeSelectionLevel = 'substandard';
+    currentSelection.activeSelectionId = subStandardCode;
     
     updateNavigation();
     updatePreview();

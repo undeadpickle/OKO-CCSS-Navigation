@@ -3,6 +3,7 @@
   /* Colors */
   --primary-color: #1976d2;
   --selected-bg: #e3f2fd;
+  --context-bg: #f5f5f5;
   --hover-bg: #f5f5f5;
   --focus-outline: #4A90E2;
   --expanded-bg: #fafafa;
@@ -210,14 +211,21 @@ body {
 }
 
 .nav-item.selected .nav-toggle,
-.nav-item.selected .nav-link {
+.nav-item.selected .nav-link,
+.nav-item.selected .nav-toggle:hover,
+.nav-item.selected .nav-link:hover {
   background-color: var(--selected-bg);
+  color: var(--primary-color);
   font-weight: 500;
+  border-left: 3px solid var(--primary-color);
+  margin-left: -3px;
 }
 
 .nav-item.in-path .nav-toggle,
-.nav-item.in-path .nav-link {
-  background-color: rgba(25, 118, 210, 0.08);
+.nav-item.in-path .nav-link,
+.nav-item.in-path .nav-toggle:hover,
+.nav-item.in-path .nav-link:hover {
+  background-color: var(--context-bg);
 }
 
 .expand-icon {
